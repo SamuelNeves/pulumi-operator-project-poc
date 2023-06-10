@@ -3,12 +3,12 @@ runtime: go
 description: A minimal Google Cloud Go Pulumi program
 config:
     gcp:project: bold-proton-389120
-    bucket-name:
-        type: string
-        description: the name of the bucket to be created
-    location:
-        type: string
-        description: location where the bucket will be created
-    uniform-level-access:
-        type: boolean
-        description: describe if the bucket objects will have uniform-level-access
+    # bucket-name:
+    #     type: string
+    #     description: the name of the bucket to be created
+    # location:
+    #     type: string
+    #     description: location where the bucket will be created
+    # uniform-level-access:
+    #     type: boolean
+    #     description: describe if the bucket objects will have uniform-level-access
