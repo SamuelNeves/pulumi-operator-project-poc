@@ -1,0 +1,147 @@
+definitions:
+  requests.BucketRequest:
+    properties:
+      location:
+        type: string
+      name:
+        type: string
+      project:
+        type: string
+      publicAccessPrevention:
+        type: string
+      uniformBucketLevelAccess:
+        type: boolean
+    required:
+    - location
+    - name
+    - project
+    type: object
+  responses.BucketResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      url:
+        type: string
+    type: object
+  responses.ListBucketsResponse:
+    properties:
+      ids:
+        items:
+          type: string
+        type: array
+    type: object
+host: 0.0.0.0:8080
+info:
+  contact: {}
+  description: This api is responsible to generate buckets in a rest way
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: BucketRequest Factory Automation Api
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - '*/*'
+      description: get the status of server.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Show the status of server.
+      tags:
+      - root
+  /bucket:
+    get:
+      consumes:
+      - '*/*'
+      description: List the buckets stacks.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/responses.ListBucketsResponse'
+            type: array
+      security:
+      - BearerAuth: []
+      summary: List Buckets Stacks.
+      tags:
+      - buckets
+    post:
+      consumes:
+      - '*/*'
+      description: TODO
+      parameters:
+      - description: bucket params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/requests.BucketRequest'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Create a Bucket Stacks.
+      tags:
+      - buckets
+  /bucket/{stack_id}:
+    delete:
+      consumes:
+      - '*/*'
+      description: get the status of server.
+      parameters:
+      - description: Stack Name
+        in: path
+        name: stack_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Delete a specific bucket stack.
+      tags:
+      - buckets
+    get:
+      consumes:
+      - '*/*'
+      description: get the status of server.
+      parameters:
+      - description: Stack Name
+        in: path
+        name: stack_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.BucketResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a specific bucket stack.
+      tags:
+      - buckets
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
