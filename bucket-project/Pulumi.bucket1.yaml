@@ -1,5 +1,5 @@
 encryptionsalt: v1:nS8e/CJqOIA=:v1:vv5P9s6fLdUd+8XW:VfdJXKxg8U+EjKYgp0uCig/nl10TXg==
 config:
-  bucket-name: teste
+  bucket-name: teste2
   location: us-central1
   uniform-level-access: true
