@@ -1,0 +1,17 @@
+apiVersion: pulumi.com/v1
+kind: Program
+metadata:
+  name: staticwebsite
+program:
+  resources:
+      bucket:
+        type: gcp:storage:Bucket
+        properties:
+          name: ${name}
+          
+          location: US
+          uniformBucketLevelAccess: true
+
+  outputs:
+    bucket-name: ${bucket.name}
+    bucket-url: ${bucket.url}

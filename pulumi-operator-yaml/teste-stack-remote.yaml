@@ -1,0 +1,13 @@
+apiVersion: pulumi.com/v1
+kind: Stack
+metadata:
+  name: bucket-remote-git-test3
+spec:
+  backend: "gs://pulumi-state-bucket-test"
+  secretsProvider: "gcpkms://projects/bold-proton-389120/locations/us-central1/keyRings/teste/cryptoKeys/pulumi"
+  stack: bucket1
+  projectRepo: "https://github.com/SamuelNeves/pulumi-operator-project-poc.git"
+  branch: "main"
+  repoDir: "bucket-project"
+  destroyOnFinalize: true
+

@@ -1,0 +1,15 @@
+apiVersion: pulumi.com/v1
+kind: Stack
+metadata:
+  name: demo-infra-forum
+spec:
+  backend: "gs://pulumi-state-bucket-test"
+  secretsProvider: "gcpkms://projects/bold-proton-389120/locations/us-central1/keyRings/teste/cryptoKeys/pulumi"
+  stack: demo-infra-forum
+  programRef:
+    name: staticwebsite
+  destroyOnFinalize: true
+  config:
+    gcp:region: us-central1
+    gcp:project: bold-proton-389120
+    name: demo-infra-forum-13234
